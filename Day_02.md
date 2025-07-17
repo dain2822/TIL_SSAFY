@@ -1,0 +1,245 @@
+## DAY_02
+
+---
+
+### [원격 저장소]
+
+: 코드와 버전 관리 이력을 온라인 상의 특정 위치에 저장하여 여러 개발자가 협업하고 코드를 공유할 수 있는 저장 공간
+
+- `git remote add origin(원격 저장소의 별명) remote_repo_url(원격 저장소  url)`: 로컬 저장소에 원격 저장소 추가
+
+→ origin이라는 별칭으로 url에 해당하는 원격 저장소를 로컬 저장소에 연
+
+![image.png](attachment:af15ea10-cf79-453e-b14c-4172042662bc:image.png)
+
+→ 이미 만들어 놓은 로컬 저장소가 있을 경우 체크 X
+
+→ 체크할 경우 github자체의 init이 됨
+
+![image.png](attachment:913bbfea-a917-4146-949d-adfea55d38bc:image.png)
+
+→ 로컬과 원격 저장소 연결
+
+### [push]
+
+![image.png](attachment:c2612034-4b93-43a3-a90a-620f89fa5e22:image.png)
+
+- `git push (저장소 별칭) (브랜치 명)`: 원격 저장소에 commit 목록을 업로드
+
+→ `git push origin master`: origin이라는 원격 저장소의 master라는 브랜치에 push
+
+![image.png](attachment:e8da0af3-a8c4-4c9d-bbee-1eea2b191fa2:image.png)
+
+→ 로컬 저장소에 커밋 완료
+
+![image.png](attachment:8a9ed620-0337-4746-ac37-1af7eb93d0e6:image.png)
+
+→ 원격 저장소에 동기화(push)
+
+### [pull & clone]
+
+- `git pull origin master`: 원격 저장소의 변경사항만을 받아옴(업데이트)
+- `git clone remote_repo_url`: 원격 저장소 전체를 복제(다운로드)
+
+→ **clone으로 받은 프로젝트는 이미 git init이 되어 있음**
+
+![image.png](attachment:f312f40e-d774-4831-81d0-290828af5d59:image.png)
+
+→ clone을 통해 다른 유저(환경)가 원격 저장소의 내용을 전체를 복제
+
+![image.png](attachment:b6c95db4-43d6-4dbb-a816-93dc7198648d:image.png)
+
+→ 유저(환경)1에서 추가 commit을 원격 저장소에 push
+
+![image.png](attachment:82250fd2-1105-4b95-81a5-50c9d93c48b1:image.png)
+
+→ 유저(환경)2에서 해당 변경 사항만을 pull을 통해 내려받음
+
+![image.png](attachment:15132798-0149-4057-9ad9-8461c1ab4564:image.png)
+
+→ 새로운 환경에서 clone
+
+→ **test라는 폴더**가 하나 생기는데 그 폴더가 **로컬 저장소**가 됨!!
+
+![image.png](attachment:7e489e93-40ae-4d9c-ba4f-ecdf784b5d11:image.png)
+
+→ 환경(유저)1에서 새로운 commit & push 발생
+
+![image.png](attachment:e7d04ec0-06c0-4e37-b145-5e8e827ab8b9:image.png)
+
+→ test라는 폴더가 로컬 저장소이기 때문에 이동
+
+→ 환경(유저)2에서 새 변경사항을 pull
+
+---
+
+### [gitignore]
+
+: git에서 특정 파일이나 디렉토리를 추적하지 않도록 설정하는 데 사용되는 텍스트 파
+
+![image.png](attachment:1c36d1fa-05d7-41d3-aa83-e216d44bc602:image.png)
+
+→ .gitignore 파일 생성하여 a.txt를 입력하면 a.txt는 **추적대상에서 제외**됨
+
+→ **이미 git의 관리를 받은 이력이 있는 파일이나 디렉토리는 적용되지 않음**(git rm —cached를 통해 git 캐시에서 삭제가 필요함)
+
+![image.png](attachment:96adf727-0a29-4035-9c53-7713b1f35c29:image.png)
+
+→ 캐시 삭제
+
+### gitignore 목록 생성 서비스
+
+url: https://www.toptal.com/developers/gitignore/
+
+: 운영체제, 프레임워크, 프로그래밍 언어 등 개발 환경에 따라 gitignore 목록을 만들어주는 사이트
+
+### git 기타 명령어
+
+- git remote -v : 현재 로컬 저장소에 등록된 원격 저장소 목록 보기
+- git remote rm 원격_저장소_이름 : 현재 로컬 저장소에 등록된 원격 저장소 삭제
+
+---
+
+### 문서화 연습 중요성 아티클
+
+url: https://d2.naver.com/news/3435170
+
+---
+
+### README.md란?
+
+: 프로젝트에 대한 설명, 사용 방법, 문서화된 정보 등을 포함하는 역할
+
+: Markdown 형식으로 작성되며, 프로젝트의 사용자, 개발자 또는 기여자들에게 프로젝트에 대한 전반적인 이해와 활용 방법을 제공하는데 사용
+
+: 주로 프로젝트의 소개, 설치 및 설정 방법, 사용 예시, 라이선스 정보, 기여 방법 등을 포함
+
+: 저장소의 최상단에 위치해야 원격 저장소에서 올바르게 출력
+
+---
+
+### [Revert]
+
+![image.png](attachment:1ff640fe-b3cd-4c98-b656-a2c0112bbc07:image.png)
+
+: 변경 사항을 안전하게 실행 취소할 수 있도록 도와주는 순방향 실행 취소 작업
+
+: commit 기록에서 commit을 삭제하거나 분리하는 대신, 지정된 변경 사항을 반전시키는 새 commit이 생성
+
+⇒ git에서 기록이 손실되는 것을 방지하며 기록의 무결성과 협업의 신뢰성을 높임
+
+- `git revert <commit id>` : revert 명령어
+
+→ **재설정**
+
+→ 단일 commit을 실행 취소
+
+→ 프로젝트 기록에서 commit을 없었던 일로 처리 후(기록에서 commit이 사라지지는 않음) 그 결과를 새로운 commit으로 추가함(즉, 없었던 일로 처리한다는 과정을 commit)
+
+![image.png](attachment:38165174-c002-47f5-bc19-95934fbd2544:image.png)
+
+→ second 커밋을 삭제
+
+![image.png](attachment:a4ef21e0-0b45-4d56-8f0a-189d929fc58f:image.png)
+
+→ second 커밋을 삭제한 기록이 생김
+
+### revert 추가 명령어
+
+- `git revert xxxxxx aaaaaaa` : 공백을 사용해 여러 commit을 한꺼번에 실행 취소 가능
+- `git revert xxxxxxx..aaaaaaa` : ..을 사용해 범위를 지정하여 여러 commit을 한꺼번에 취소 가능
+- `git revert —no-edit xxxxxxx` : commit 메시지 작성을 위한 편집기를 열지 않음(자동 commit 진행)
+- `git revert —no-commit xxxxxxx` : 자동으로 commit하지 않고 staging area에만 올림(이후 직접 commit 해야 함) / 여러 commit을 revert할 때 하나의 commit으로 묶는 것이 가능
+
+---
+
+### [Reset]
+
+![image.png](attachment:9bd63cf9-ecaf-495b-a4b0-7e98e33ee6fc:image.png)
+
+- `git reset [option] <commit id>` : 특정 commit으로 되돌아가는 작업
+
+→ **되돌리기**
+
+→ 시계를 과거로 돌리는 듯한 행위
+
+→ 특정 commit으로 되돌아 갔을 때, 되돌아간  commit 이후의 commit은 모두 삭제
+
+### reset의 옵션
+
+: reset은 과거 commit으로 되돌아간 후 commit 이후 commit들이 삭제됨
+
+: 삭제되는 commit들의 기록을 어떤 영역에 남겨둘 것인지 옵션을 통해 조정 가
+
+![image.png](attachment:8d2754b0-8b13-4227-bd69-098f838c9ba5:image.png)
+
+1. `--soft`  : 삭제된 commit의 기록을 staging area에 남김
+
+![image.png](attachment:f34ed664-a301-4865-b6cd-38fee8e37aed:image.png)
+
+![image.png](attachment:664b1d2c-1469-4ca0-9b49-854220e10ed8:image.png)
+
+1. `--mixed`  : 삭제된 commit의 기록을 working directory에 남김(default)
+    
+    ![image.png](attachment:5473d5b3-4740-4295-84c1-9fc6900fdb6f:image.png)
+    
+2. `--hard` : 삭제된 commit의 기록을 남기지 않음
+
+![image.png](attachment:15557efa-b7f5-4deb-a63b-b5f9ad0fb6ef:image.png)
+
+![image.png](attachment:7d213817-2d8e-413c-8ea9-84db81472c8c:image.png)
+
+![image.png](attachment:d7b297bb-e53c-4c5c-b7b3-395225f9474a:image.png)
+
+### 이미 삭제한 commit으로 돌아가기
+
+- `git reflog`
+
+![image.png](attachment:2f5b6856-f382-4848-be1f-963ab390128e:image.png)
+
+→ HEAD가 이전에 가리켰던 모든 commit을 보여줌
+
+→ reset의 —hard 옵션을 통해 지워진 commit도 **reflog**로 조회하여 복구 가능
+
+---
+
+### [Git Undoing]
+
+- `git restore` : modified 상태의 파일 되돌리기
+
+→ working directory에서 파일을 수정한 뒤, 파일의 수정 사항을 취소하고 원래 모습대로 되돌리는 작업
+
+![image.png](attachment:bbb63e9c-f6b0-40c0-9675-f489b026da31:image.png)
+
+![image.png](attachment:41acb36f-6658-4887-873e-6caf3783374e:image.png)
+
+- 원래 파일로 덮어쓰는 원리이기 때문에 수정한 내용은 전부 사라짐
+- git restore를 통해 수정 취소 후에는 해당 내용을 복원할 수 없음
+
+---
+
+### [Unstage]
+
+- `git rm --cached` : Staging Area에서 Working Directory로 되돌리기
+
+→ git 저장소에 **commit이 없는 경우**
+
+![image.png](attachment:c770c23c-2ca4-4d69-af2b-6fe55749a1c9:image.png)
+
+→ 어떤 log가 없는 상태에서 staging area에 파일 추가
+
+![image.png](attachment:02e33b76-7e3c-4b38-a7f9-fe996fa491d5:image.png)
+
+→ staging area의 파일을 working directory로 되돌림
+
+- `git restore --staged`  : staging area에서 working directory로 되돌리기
+
+→ git 저장소에 **commit이 존재하는 경우**
+
+![image.png](attachment:5a5963bb-0a70-414b-9c4d-47b60f44f5d9:image.png)
+
+→ log가 존재하는 경우
+
+![image.png](attachment:5a3397ff-6b35-488d-ba8c-1e45e7d1f3e1:image.png)
+
+→ staging area의 파일을 working directory로 되돌림
